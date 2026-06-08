@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Dixmit
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record model="ir.ui.view" id="mcp_server_key_form_view">
+        <field name="model">mcp.server.key</field>
+        <field name="inherit_id" ref="ai_oca_mcp.mcp_server_key_form_view" />
+        <field name="arch" type="xml">
+            <field name="server_id" position="after">
+                <field name="auth_type" />
+                <field
+                    name="oauth_client_id"
+                    groups="base.group_no_one"
+                    invisible="auth_type != 'oauth' or not oauth_client_id"
+                />
+                <field
+                    name="scope"
+                    groups="base.group_no_one"
+                    invisible="auth_type != 'oauth' or not scope"
+                />
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="mcp_server_key_tree_view">
+        <field name="model">mcp.server.key</field>
+        <field name="inherit_id" ref="ai_oca_mcp.mcp_server_key_tree_view" />
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="auth_type" />
+            </field>
+        </field>
+    </record>
+</odoo>

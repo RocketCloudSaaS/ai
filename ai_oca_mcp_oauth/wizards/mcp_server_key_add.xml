@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Dixmit
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record model="ir.ui.view" id="mcp_server_key_add_form_view">
+        <field name="model">mcp.server.key.add</field>
+        <field name="inherit_id" ref="ai_oca_mcp.mcp_server_key_add_form_view" />
+        <field name="arch" type="xml">
+            <field name="auth_type" position="before">
+                <field name="server_auth_type" invisible="1" />
+            </field>
+            <field name="auth_type" position="attributes">
+                <attribute name="readonly">server_auth_type != 'bearer_oauth'</attribute>
+            </field>
+        </field>
+    </record>
+</odoo>
