@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Dixmit
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record model="ai.tool" id="api_request">
+        <field name="name">api_request</field>
+        <field
+            name="description"
+        >Make HTTP requests to any external API. Supports direct URLs or stored connections (ai.api.connection).</field>
+        <field name="model_id" ref="ai_tool.model_ai_tool" />
+        <field name="function_name">_ai_api_request</field>
+        <field name="kind">generic</field>
+    </record>
+</odoo>
