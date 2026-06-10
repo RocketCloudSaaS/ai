@@ -1,2 +1,1 @@
-This module creates the default `opencode-connector` API connection for the
-OpenCode/Odoo Copilot gateway.
+This module creates the default OpenCode API connection for AI integrations.
