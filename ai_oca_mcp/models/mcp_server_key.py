@@ -28,7 +28,18 @@ class McpServerKey(models.Model):
                 "expired_on": fields.Datetime.now(),
             }
         )
-        self._get_mcp_server_by_key.clear_cache(self)
+        self._clear_mcp_server_by_key_cache()
+
+    def _clear_mcp_server_by_key_cache(self):
+        clear_cache = getattr(self._get_mcp_server_by_key, "clear_cache", None)
+        if clear_cache:
+            clear_cache(self)
+            return
+        for clear_method_name in ("clear_cache", "clear_caches"):
+            clear_cache = getattr(self.env.registry, clear_method_name, None)
+            if clear_cache:
+                clear_cache()
+                return
 
     _sql_constraints = [
         ("key_uniq", "unique(hashed_key)", "The key must be unique"),
